@@ -1,6 +1,6 @@
 # AndroidGelistirmeBootcamp 
 
-Bu proje, Android Geliştirme Bootcamp kapsamında hazırlanmış olan Kotlin ödevidir.  
+Bu proje, Android Geliştirme Bootcamp kapsamında hazırlanmış olan Kotlin ödevlerini içerir.  
 
 
 ---
