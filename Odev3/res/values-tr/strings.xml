@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Kitap Dükkanı</string>
+    <string name="sayfaBaslik">Çok Satanlar</string>
+    <string name="kitap1">The Perfect Divorce</string>
+    <string name="kitap2">Strangers in Time</string>
+    <string name="kitap3">Wild and Wrangled</string>
+    <string name="kitap4">Onyx Storm</string>
+    <string name="fiyat1">774,91 TL</string>
+    <string name="fiyat2">803,00 TL</string>
+    <string name="fiyat3">558,29 TL</string>
+    <string name="fiyat4">384,38 TL</string>
+    <string name="buttonYazi">Sepete Ekle</string>
+</resources>

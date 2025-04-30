@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Book Store</string>
+    <string name="sayfaBaslik">Best Sellers</string>
+    <string name="kitap1">The Perfect Divorce</string>
+    <string name="kitap2">Strangers in Time</string>
+    <string name="kitap3">Wild and Wrangled</string>
+    <string name="kitap4">Onyx Storm</string>
+    <string name="fiyat1">$20.14</string>
+    <string name="fiyat2">$20.87</string>
+    <string name="fiyat3">$14.51</string>
+    <string name="fiyat4">$9.99</string>
+    <string name="buttonYazi">Add to Chart</string>
+</resources>

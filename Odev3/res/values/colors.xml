@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="arkaPilan">#FAF8F6</color>
+    <color name="yaziRenk2">#0F0E17</color>
+    <color name="turuncu1">#BF5B04</color>
+    <color name="yaziRenk1">#FFFFFFFF</color>
+    <color name="turuncu2">#BF7245</color>
+</resources>
