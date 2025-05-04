@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tusTakimi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:lines="2"
+        android:maxLines="2"
+        android:textAlignment="textEnd"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@id/sonuc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/sonuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:lines="1"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textAlignment="textEnd"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+
+        style="@style/buttonRow">
+
+        <Button
+            android:id="@+id/silBtn"
+            style="@style/buttonSil"
+            android:text="C" />
+
+        <Button
+            android:id="@+id/topla"
+            style="@style/buttonSembol"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        style="@style/buttonRow">
+
+        <Button
+            android:id="@+id/btn7"
+            style="@style/buttonNumber"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btn8"
+            style="@style/buttonNumber"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btn9"
+            style="@style/buttonNumber"
+            android:text="9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        style="@style/buttonRow">
+
+        <Button
+            android:id="@+id/btn4"
+            style="@style/buttonNumber"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn5"
+            style="@style/buttonNumber"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/btn6"
+            style="@style/buttonNumber"
+            android:text="6" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        style="@style/buttonRow">
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/buttonNumber"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/buttonNumber"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn3"
+            style="@style/buttonNumber"
+            android:text="3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        style="@style/buttonRow">
+
+        <Button
+            android:id="@+id/btn0"
+            style="@style/buttonNumber"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/btnEsittir"
+            style="@style/buttonSonuc"
+            android:text="=" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+

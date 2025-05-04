@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="buttonRow">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="buttonNumber">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:backgroundTint">@color/buttonArkaplan</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/sayiRengi</item>
+        <item name="android:onClick">numberAction</item>
+    </style>
+
+    <style name="buttonSembol">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:backgroundTint">@color/buttonArkaplan</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/sembol</item>
+        <item name="android:onClick">sembolAction</item>
+    </style>
+
+    <style name="buttonSonuc">
+        <item name="android:layout_weight">2</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:backgroundTint">@color/arkaPilanB</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/sayiRengi</item>
+        <item name="android:onClick">sonucAction</item>
+    </style>
+
+    <style name="buttonSil">
+        <item name="android:layout_weight">2</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:backgroundTint">@color/buttonArkaplan</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/sil</item>
+        <item name="android:onClick">silAction</item>
+    </style>
+
+</resources>
