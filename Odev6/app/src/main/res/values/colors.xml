@@ -1,0 +1,14 @@
+<resources>
+    <!-- Sayfanın tamamının arka planı için -->
+    <color name="background">#171717</color>
+    <!-- Banner/Card arka planı için -->
+    <color name="bannerBackground">#2a7964</color>
+    <!-- Başlık yazıları vs. için -->
+    <color name="textPrimary">#ffffff</color>
+    <!-- Placeholder altındaki yazı için -->
+    <color name="textSecondary">#a3abad</color>
+
+    <color name="perksBg">#2f2f2f</color>
+
+    <color name="green">#3a854c</color>
+</resources>

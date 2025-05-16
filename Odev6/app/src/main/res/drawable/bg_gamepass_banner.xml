@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Yatay (soldan sağa) gradient için angle="0" -->
+    <gradient
+        android:startColor="#107C10"
+        android:endColor="#00BCF2"
+        android:angle="0"/>
+
+    <!-- 12dp köşe yarıçapı -->
+    <corners android:radius="12dp"/>
+</shape>

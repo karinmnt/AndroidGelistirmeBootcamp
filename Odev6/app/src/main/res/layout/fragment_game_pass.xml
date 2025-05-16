@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- 0. Profil Çubuğu -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="8dp">
+
+
+
+            <!-- 1) Avatar -->
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/profile_pic"
+                android:contentDescription="User Avatar"
+                android:scaleType="centerCrop"
+                />
+
+            <!-- 2) Metin Bloğu: wrap_content, iki satır içeriyor -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 2a) Birinci satır: Kullanıcı adı + Etiket -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="username"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/tvSubType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="ULTIMATE"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <!-- 2b) İkinci satır: G-skoru, birinci satırın genişliği kadar hizalanacak -->
+                <TextView
+                    android:id="@+id/tvGScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="G SCORE"
+                    android:textStyle="bold"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGamePassBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#00FFFFFF"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:layout_width="362dp"
+                android:layout_height="66dp"
+                android:contentDescription="Game Pass Banner"
+                android:scaleType="centerCrop"
+                android:src="@drawable/gamepass_png" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:id="@+id/tvRecentlyTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recently Added"
+                android:textColor="@color/textPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSeeMoreRecent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See More"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginStart="8dp"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+        <!-- 3. Recently Added RecyclerView -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecently"
+            android:layout_width="match_parent"
+            android:layout_height="186dp"
+            android:layout_marginTop="8dp" />
+
+        <!-- 4. Perks Başlığı -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp"
+            android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/tvPerksTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Perks"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tvSeeMorePerk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See More"
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        </LinearLayout>
+
+        <!-- 5. Perks RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPerks"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="8dp" />
+
+        <!-- 6. (Devamı) İleriki bölüm placeholder-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvblok"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:id="@+id/tvComingTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Coming To Game Pass"
+                android:textColor="@color/textPrimary"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/tvSeeAllComing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See all"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginStart="8dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvComing"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="24dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/tvMostPopularTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Most Popular"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tvSeeAllMostPopular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See all"
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMostPopular"
+            android:layout_width="match_parent"
+            android:layout_height="186dp"
+            android:layout_marginTop="8dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="24dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:id="@+id/tvdayone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Day one releases"
+                android:textColor="@color/textPrimary"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/tvSeeAlldayone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See all"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginStart="8dp"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDayOne"
+            android:layout_width="match_parent"
+            android:layout_height="186dp"
+            android:layout_marginTop="8dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewSatir"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/perksBg">
+
+                <TextView
+                    android:id="@+id/textViewKisiAd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="All games A-Z"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.5" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+
+
+            tools:listitem="@layout/item_category_card"
+            tools:itemCount="2"
+            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:spanCount="2" />
+
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.core.widget.NestedScrollView>
