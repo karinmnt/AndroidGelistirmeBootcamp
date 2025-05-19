@@ -87,7 +87,7 @@ Projede zaman yetersizliğinden ötürü sadece GamePass sayfasının kopyası o
 ---
 
 ## 📁 Odev7 : Basit ToDoList
-Bu proje kapsamında basit bir ToDoList uygulaması yapılmıştır. Bu uygulamada yapılacaklar ekelme, güncelleme ve silme fonksiyonları mevcuttur.
+Bu proje kapsamında basit bir ToDoList uygulaması yapılmıştır. Bu uygulamada yapılacaklar ekelenebilir, güncelleme ve silme yapılabilir.
 
 
 
