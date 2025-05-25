@@ -13,6 +13,9 @@
         <action
             android:id="@+id/gecisDetay"
             app:destination="@id/yemekDetayFragment" />
+        <action
+            android:id="@+id/action_anasayfaFragment_to_favorilerFragment"
+            app:destination="@id/favorilerFragment" />
     </fragment>
     <fragment
         android:id="@+id/yemekDetayFragment"
@@ -25,6 +28,9 @@
         <argument
             android:name="yemekNesnesi"
             app:argType="com.example.yemeksipariset.data.entity.Yemekler" />
+        <action
+            android:id="@+id/gecisDetayAna"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
     <fragment
         android:id="@+id/sepetFragment"
@@ -35,9 +41,6 @@
             android:name="sepetYemekListesi"
             app:argType="com.example.yemeksipariset.data.entity.SepetYemekler" />
         <action
-            android:id="@+id/gecisSepettenSiparis"
-            app:destination="@id/siparislerSayfasiFragment" />
-        <action
             android:id="@+id/gecisSpettenDetay"
             app:destination="@id/yemekDetayFragment" />
     </fragment>
@@ -45,5 +48,19 @@
         android:id="@+id/siparislerSayfasiFragment"
         android:name="com.example.yemeksipariset.data.ui.fragment.SiparislerSayfasiFragment"
         android:label="fragment_siparisler_sayfasi"
-        tools:layout="@layout/fragment_siparisler_sayfasi" />
+        tools:layout="@layout/fragment_siparisler_sayfasi" >
+        <action
+            android:id="@+id/gecisSiparislerdenSepet"
+            app:destination="@id/sepetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorilerFragment"
+        android:name="com.example.yemeksipariset.data.ui.fragment.FavorilerFragment"
+        android:label="fragment_favoriler"
+        tools:layout="@layout/fragment_favoriler" >
+    <action
+        android:id="@+id/action_favorilerFragment_to_yemekDetayFragment"
+        app:destination="@id/yemekDetayFragment" />
+
+    </fragment>
 </navigation>

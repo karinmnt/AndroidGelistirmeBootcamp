@@ -16,9 +16,10 @@ class YemeklerDataSource (var yemeklerDao: YemeklerDao) {
     : CRUDCevap = withContext(Dispatchers.IO){
         return@withContext yemeklerDao.sepeteEkle(yemek.yemek_adi,
             yemek.yemek_resim_adi, yemek.yemek_fiyat, adet,kullaniciAdi)
+
     }
     suspend fun sepettenGetir(kullaniciAdi: String) : List<SepetYemekler> = withContext(Dispatchers.IO){
-        return@withContext yemeklerDao.sepettenGetir(kullaniciAdi).sepet_yepemekler
+        return@withContext yemeklerDao.sepettenGetir(kullaniciAdi).sepet_yemekler
     }
 
     suspend fun sepettenSil(sepetYemeklerId:Int,kullaniciAdi:String) = withContext(Dispatchers.IO){

@@ -20,6 +20,7 @@ interface YemeklerDao {
                            @Field("yemek_siparis_adet") yemek_siparis_adet : Int,
                            @Field("kullanici_adi") kullanici_adi : String
                            ) :CRUDCevap
+
     @POST("yemekler/sepettekiYemekleriGetir.php")
     @FormUrlEncoded
     suspend fun sepettenGetir(@Field("kullanici_adi") kullanici_adi: String) : SepetYemeklerCevap
@@ -27,5 +28,5 @@ interface YemeklerDao {
     @POST("yemekler/sepettenYemekSil.php")
     @FormUrlEncoded
     suspend fun sepettenSil(@Field("sepet_yemek_id") sepet_yemek_id : Int,
-                            @Field("kullanici_adi")kullanici_adi: String)
+                            @Field("kullanici_adi")kullanici_adi: String) :CRUDCevap
 }

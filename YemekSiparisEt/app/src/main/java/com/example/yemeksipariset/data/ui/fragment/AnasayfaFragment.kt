@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.yemeksipariset.data.entity.Favoriler
 import com.example.yemeksipariset.data.entity.Yemekler
 import com.example.yemeksipariset.data.ui.adapter.YemeklerAdapter
 import com.example.yemeksipariset.data.ui.viewmodel.AnasayfaViewModel
+import com.example.yemeksipariset.data.ui.viewmodel.FavorilerViewModel
 import com.example.yemeksipariset.databinding.FragmentAnasayfaBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +23,15 @@ class AnasayfaFragment : Fragment() {
     private lateinit var binding: FragmentAnasayfaBinding
     private val viewModel: AnasayfaViewModel by viewModels()
     private lateinit var adapter: YemeklerAdapter
+    private lateinit var favoriler: Favoriler
+    private val FavorilerViewModel: FavorilerViewModel by viewModels()
+    private fun onFavClicked(yemekler: Yemekler){
+        val favoriler = Favoriler(yemek_id = yemekler.yemek_id,
+            yemek_adi = yemekler.yemek_adi, yemek_resim_adi = yemekler.yemek_resim_adi,
+            yemek_fiyat = yemekler.yemek_fiyat)
+        FavorilerViewModel.favoriEkle(favoriler)
+        Toast.makeText(requireContext(), "${yemekler.yemek_adi} favorilere eklendi", Toast.LENGTH_SHORT).show()
+    }
 
 
     override fun onCreateView(
@@ -31,7 +43,8 @@ class AnasayfaFragment : Fragment() {
         adapter = YemeklerAdapter(
             requireContext(),
             mutableListOf(),
-            viewModel
+            viewModel, onFavorilerEkle = {yemek -> onFavClicked(yemek)
+            }
         ){yemek ->
             val gecis = AnasayfaFragmentDirections.gecisDetay(yemek)
             findNavController().navigate(gecis)

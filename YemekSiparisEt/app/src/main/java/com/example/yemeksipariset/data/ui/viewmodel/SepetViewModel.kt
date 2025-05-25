@@ -5,22 +5,25 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.yemeksipariset.data.entity.SepetYemekler
+import com.example.yemeksipariset.data.entity.Siparis
 import com.example.yemeksipariset.data.entity.Yemekler
 import com.example.yemeksipariset.data.repo.YemeklerRepo
+import com.example.yemeksipariset.data.room.SiparisDao
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
-class SepetViewModel @Inject constructor(var yemeklerRepo: YemeklerRepo) : ViewModel() {
+class SepetViewModel @Inject constructor(var yemeklerRepo: YemeklerRepo, var siparisDao: SiparisDao) : ViewModel() {
 
     var sepetListesi = MutableLiveData<List<SepetYemekler>>()
 
-    fun sepetiGoster(kullaniciAdi: String){
+    fun sepettenGetir(kullaniciAdi: String) {
         viewModelScope.launch {
             try {
-                var gosterSepet = yemeklerRepo.sepettenGetir(kullaniciAdi)
+                val gosterSepet = yemeklerRepo.sepettenGetir(kullaniciAdi)
+                Log.e("sepetviewmodel", "Güncel sepet: $gosterSepet")
                 sepetListesi.value=gosterSepet
             }catch (e:Exception){
                 Log.e("sepetviewmodel","Hata:${e.message}")
@@ -30,47 +33,58 @@ class SepetViewModel @Inject constructor(var yemeklerRepo: YemeklerRepo) : ViewM
 
     fun sepettenSil(sepetYemekId:Int,kullaniciAdi: String){
         viewModelScope.launch {
-            var cevap = yemeklerRepo.sepettenSil(sepetYemekId,kullaniciAdi)
-            sepetiGoster(kullaniciAdi)
+            val cevap = yemeklerRepo.sepettenSil(sepetYemekId,kullaniciAdi)
+            sepettenGetir(kullaniciAdi)
 
         }
     }
 
     fun sepeteEkle(yemek:Yemekler,adet:Int,kullaniciAdi: String){
         viewModelScope.launch {
-            var cevap = yemeklerRepo.sepeteEkle(yemek,adet,kullaniciAdi)
-            Log.e("sepeteEkle","Durum: ${cevap.succes}, mesaj: ${cevap.message}")
+            val cevap = yemeklerRepo.sepeteEkle(yemek,adet,kullaniciAdi)
+            Log.e("sepeteEkle","Durum: ${cevap.success}, mesaj: ${cevap.message}")
+            sepettenGetir(kullaniciAdi)
         }
     }
 
-    fun sepeteEkleDuzen(yemek: Yemekler,kullaniciAdet:Int,kullaniciAdi: String){
+    fun sepeteEkleVeyaGuncelle(yemek: Yemekler, adet: Int, kullaniciAdi: String) {
         viewModelScope.launch {
             try {
-                var mevcutSepet = yemeklerRepo.sepettenGetir(kullaniciAdi)
-
-                var ayniYemek = mevcutSepet.find { it.yemek_adi == yemek.yemek_adi }
-
-                if(ayniYemek != null) {
-                    var oncekiAdet = ayniYemek.yemek_siparis_adet.toIntOrNull() ?: 0
-                    var toplamAdet = oncekiAdet + kullaniciAdet
-
-                    yemeklerRepo.sepettenSil(ayniYemek.sepet_yemek_id.toInt(),kullaniciAdi)
-
-                    yemeklerRepo.sepeteEkle(yemek,toplamAdet,kullaniciAdi)
-                    Log.e("sepeteEkle","Adet güncellendi: ${yemek.yemek_adi},adet:$kullaniciAdet")
-                } else{
-                    yemeklerRepo.sepeteEkle(yemek,kullaniciAdet,kullaniciAdi)
-                    Log.e("sepeteEkle","${yemek.yemek_adi}, $kullaniciAdet adet eklendi.")
+                val mevcutSepet = try {
+                    yemeklerRepo.sepettenGetir(kullaniciAdi)
+                } catch (e: Exception) {
+                    Log.e("HATA", "Sepet alınamadı: ${e.message}")
+                    emptyList()
                 }
 
-                sepetiGoster(kullaniciAdi)
-            }catch (e:Exception){
-                Log.e("sepeteEkleHatasi","Hata: ${e.localizedMessage}")
+                val varOlan = mevcutSepet.find { it.yemek_adi.equals(yemek.yemek_adi, ignoreCase = true) }
+                Log.e("sepeteEkleGuncelle", "Sepette var mı? ${varOlan?.yemek_adi ?: "YOK"}")
+
+                if (varOlan != null) {
+                    val yeniAdet = varOlan.yemek_siparis_adet.toInt() + adet
+                    yemeklerRepo.sepettenSil(varOlan.sepet_yemek_id.toInt(), kullaniciAdi)
+                    yemeklerRepo.sepeteEkle(yemek, yeniAdet, kullaniciAdi)
+                    Log.e("sepeteEkleGuncelle", "Var olan güncellendi: ${yemek.yemek_adi}, yeni adet: $yeniAdet")
+                } else {
+                    // Sepette yoksa doğrudan ekle
+                    yemeklerRepo.sepeteEkle(yemek, adet, kullaniciAdi)
+                    Log.e("sepeteEkleGuncelle", "Yeni eklendi: ${yemek.yemek_adi}, adet: $adet")
+                }
+
+                sepettenGetir(kullaniciAdi)
+            } catch (e: Exception) {
+                Log.e("sepeteEkleGuncelle", "Hata: ${e.message}")
             }
+            sepettenGetir(kullaniciAdi)
         }
-
-
-
-
     }
+
+    fun siparisEkle(siparis: Siparis){
+        viewModelScope.launch {
+            siparisDao.siparisEkle(siparis)
+        }
+    }
+
+
+
 }

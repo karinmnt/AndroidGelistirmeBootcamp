@@ -14,6 +14,7 @@ class YemeklerAdapter(
     private val mContext: Context,
     private val yemeklerListesi: MutableList<Yemekler>,
     private val viewModel: AnasayfaViewModel,
+    private val onFavorilerEkle: (Yemekler) -> Unit,
     private val onEkleClick: (Yemekler) -> Unit
 )
     : RecyclerView.Adapter<YemeklerAdapter.AnasayfaCardTasarimTutucu>() {
@@ -46,6 +47,10 @@ class YemeklerAdapter(
         t.ivEkle.setOnClickListener {
             val gecis = AnasayfaFragmentDirections.gecisDetay(yemek)
             Navigation.findNavController(it).navigate(gecis)
+        }
+
+        t.ivFavAna.setOnClickListener {
+            onFavorilerEkle(yemek)
         }
 
 

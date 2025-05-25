@@ -27,12 +27,24 @@ class SepetAdapter(var mContext: Context, var sepetListesi : List<SepetYemekler>
         val resimId = mContext.resources.getIdentifier(resimAdi,"drawable",mContext.packageName)
         t.imageViewSepet.setImageResource(resimId)
 
+        t.tvSepetYemekAdi.text = sepetYemek.yemek_adi
+        t.tvSepetAdet.text="${sepetYemek.yemek_siparis_adet}"
+
+        val adet = sepetYemek.yemek_siparis_adet.toIntOrNull() ?:0
+        val toplamFiyat = adet * sepetYemek.yemek_fiyat
+        t.tvSonFiyat.text = "$toplamFiyat ₺"
+
         t.imageViewSepetSil.setOnClickListener {
-            Snackbar.make(it,"${sepetYemek.yemek_adi}silindi",Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(it,"${sepetYemek.yemek_adi} silindi",Snackbar.LENGTH_SHORT).show()
             silListner.sepettenSil(sepetYemek.sepet_yemek_id.toInt())
         }
 
-        t.tvSepetAdet.text="${sepetYemek.yemek_siparis_adet}"
+
+    }
+
+    fun updateList(yeniListe: List<SepetYemekler>) {
+        this.sepetListesi = yeniListe
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

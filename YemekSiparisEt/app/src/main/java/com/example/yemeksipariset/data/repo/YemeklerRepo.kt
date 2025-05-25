@@ -19,4 +19,7 @@ class YemeklerRepo(var yemeklerDataSource: YemeklerDataSource) {
 
     suspend fun sepettenSil(sepetYemeklerId: Int, kullaniciAdi: String)
     = yemeklerDataSource.sepettenSil(sepetYemeklerId,kullaniciAdi)
+
+
+
 }
